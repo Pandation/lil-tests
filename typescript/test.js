@@ -30,6 +30,11 @@ typeof unknownVar === "boolean" ? (boolVar = unknownVar) : ""; // works also wit
 function returnVoid() {
     console.log("You return nothing John Snow!");
 } // type Void for functions (We use type null or undefined for variables)
-// let funct: Function = returnVoid; //generic type
-var func2 = returnVoid; //specific function type
-console.log("cool", func2(8, true));
+function returnNum(num) {
+    if (num === void 0) { num = 15; }
+    console.log(num);
+}
+var funct = returnVoid; //generic type
+var age;
+age = returnNum; //specific function type
+console.log(age(null));

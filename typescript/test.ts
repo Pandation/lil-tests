@@ -23,7 +23,7 @@ enum Role {
   ADMIN, // so 5 here
 }
 // if (Role.USER === 0) console.log(true);
- //console.log(Role[5]); // log : ADMIN
+//console.log(Role[5]); // log : ADMIN
 
 let any: any = "typescript doesn't care"; // anything I want, typescript will not verify
 
@@ -36,10 +36,16 @@ let boolVar: boolean;
 typeof unknownVar === "boolean" ? (boolVar = unknownVar) : ""; // works also with ternary cond
 
 function returnVoid(): void {
-    console.log("You return nothing John Snow!")
-}  // type Void for functions (We use type null or undefined for variables)
+  console.log("You return nothing John Snow!");
+} // type Void for functions (We use type null or undefined for variables)
 
-// let funct: Function = returnVoid; //generic type
-let func2: (number: number, arg2: boolean) => void = returnVoid //specific function type
 
-console.log("cool", func2(8, true))
+function returnNum(num: number = 15): void {
+  console.log(num);
+} 
+let funct: Function = returnVoid; //generic type
+
+let age: (num: number) => void;
+age = returnNum; //specific function type
+
+console.log(age(null))
