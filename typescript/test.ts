@@ -8,25 +8,35 @@ let tuple: [number, string, string] = [13, "doe", "john"]; // tuple
 let tupleExpert: [object, any, [string, boolean | number], { level: string }] =
   [{}, true, ["", 15], { level: "string" }]; // multiple assignations
 let object: {
-    level?: number | string;
-    name: string;
-    alive: boolean
+  level?: number | string;
+  name: string;
+  alive: boolean;
 } = {
-    name: "John",
-    alive: true
-} // object + conditionnal property "?"
+  name: "John",
+  alive: true,
+}; // object + conditionnal property "?"
 
 enum Role {
-    USER, // 0
-    SUBSCRIBER, // 1
-    WRITER = 4, // 4 désormais
-    ADMIN // donc 5 ici
+  USER, // 0
+  SUBSCRIBER, // 1
+  WRITER = 4, // 4 désormais
+  ADMIN, // donc 5 ici
 }
-if (Role.USER === 0) console.log(true); 
-console.log(Role[5]) // log : ADMIN
+if (Role.USER === 0) console.log(true);
+console.log(Role[5]); // log : ADMIN
 
-let any: any = "typescript doesn't care" // anything I want, typescript will not verify
+let any: any = "typescript doesn't care"; // anything I want, typescript will not verify
 
-let unknown: unknown 
+let unknownVar: unknown = true;
+let var2: number;
+if (typeof unknownVar === "number") {
+  var2 = unknownVar;
+} // Test unknown with IF
+let boolVar: boolean;
+typeof unknownVar === "boolean" ? (boolVar = unknownVar) : ""; // works also with ternary cond
+
+function returnVoid(): void {
+    console.log("You return nothing John Snow!")
+}  // type Void for functions (We use type null or other for variables)
 
 

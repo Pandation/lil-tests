@@ -15,10 +15,19 @@ var Role;
     Role[Role["USER"] = 0] = "USER";
     Role[Role["SUBSCRIBER"] = 1] = "SUBSCRIBER";
     Role[Role["WRITER"] = 4] = "WRITER";
-    Role[Role["ADMIN"] = 5] = "ADMIN"; // donc 5 ici
+    Role[Role["ADMIN"] = 5] = "ADMIN";
 })(Role || (Role = {}));
 if (Role.USER === 0)
     console.log(true);
 console.log(Role[5]); // log : ADMIN
 var any = "typescript doesn't care"; // anything I want, typescript will not verify
-var unknown;
+var unknownVar = true;
+var var2;
+if (typeof unknownVar === "number") {
+    var2 = unknownVar;
+} // Test unknown with IF
+var boolVar;
+typeof unknownVar === "boolean" ? (boolVar = unknownVar) : ""; // works also with ternary cond
+function returnVoid() {
+    console.log("You return nothing John Snow!");
+} // type Void for functions (We use type null or other for variables)
