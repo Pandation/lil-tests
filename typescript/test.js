@@ -1,7 +1,7 @@
 var machin = "Coucou"; //type String
 var boolean = true; // boolean
 var number = 14; //number
-var nulberArray = [16, 13, 35]; // array number
+var numberArray = [16, 13, 35]; // array number
 var secondArray = [15, 18]; // second method
 var thirdArray = [14, true, false]; // multiple options
 var tuple = [13, "doe", "john"]; // tuple
@@ -37,4 +37,14 @@ function returnNum(num) {
 var funct = returnVoid; //generic type
 var age;
 age = returnNum; //specific function type
-console.log(age(null));
+// console.log(age(null))
+//rest parameters
+var colors = function (arg1) {
+    var restOfArgs = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        restOfArgs[_i - 1] = arguments[_i];
+    }
+    console.log(arguments); //array with all args given to the function
+    console.log(arg1, restOfArgs);
+};
+//colors("Title", "Elem1", "Elem2", "Elem3");

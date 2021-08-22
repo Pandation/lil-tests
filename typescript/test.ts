@@ -1,7 +1,7 @@
 let machin: string = "Coucou"; //type String
 let boolean: boolean = true; // boolean
 let number: number = 14; //number
-let nulberArray: Array<number> = [16, 13, 35]; // array number
+let numberArray: Array<number> = [16, 13, 35]; // array number
 let secondArray: number[] = [15, 18]; // second method
 let thirdArray: (number | boolean)[] = [14, true, false]; // multiple options
 let tuple: [number, string, string] = [13, "doe", "john"]; // tuple
@@ -48,4 +48,12 @@ let funct: Function = returnVoid; //generic type
 let age: (num: number) => void;
 age = returnNum; //specific function type
 
-console.log(age(null))
+// console.log(age(null))
+
+//rest parameters
+let colors = function(arg1: string, ...restOfArgs: string[]) {
+  console.log(arguments);//array with all args given to the function
+  console.log(arg1, restOfArgs);
+}
+
+//colors("Title", "Elem1", "Elem2", "Elem3");
