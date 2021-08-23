@@ -39,10 +39,9 @@ function returnVoid(): void {
   console.log("You return nothing John Snow!");
 } // type Void for functions (We use type null or undefined for variables)
 
-
 function returnNum(num: number = 15): void {
   console.log(num);
-} 
+}
 let funct: Function = returnVoid; //generic type
 
 let age: (num: number) => void;
@@ -51,9 +50,81 @@ age = returnNum; //specific function type
 // console.log(age(null))
 
 //rest parameters
-let colors = function(arg1: string, ...restOfArgs: string[]) {
-  console.log(arguments);//array with all args given to the function
+let colors = function (arg1: string, ...restOfArgs: string[]) {
+  console.log(arguments); //array with all args given to the function
   console.log(arg1, restOfArgs);
-}
+};
 
 //colors("Title", "Elem1", "Elem2", "Elem3");
+
+//callbacks
+
+function gift(age: number, sum: (arg: number) => void) {
+  const memberAge = age + 3;
+  sum(memberAge); //number
+}
+
+// gift(40, (num) => {
+//   console.log(num) // void
+// })
+
+function concatenate(arg1: string | number, arg2: string | number) {
+  let result;
+  if (typeof arg1 === "number" && typeof arg2 === "number") {
+    result = arg1 + arg2;
+  } else if (typeof arg1 === "string" && typeof arg2 === "string") {
+    result = arg1 + arg2;
+  } else {
+    result = arg1.toString() + arg2.toString();
+  }
+}
+
+console.log(concatenate(10, 20)); //  number 30
+console.log(concatenate("Hello", "World")); //  HelloWorld
+console.log(concatenate("Hello", 20)); //  Hello20
+
+//type Aliases
+type StrOrBool = string | boolean;
+type myObject = {
+  color?: string;
+  strength: number;
+  effect?: StrOrBool;
+};
+
+let object1: myObject = {
+  color: "red",
+  strength: 23,
+  effect: false,
+};
+
+//literal types
+let color: "red" | "blue" = "red";
+type timingFunction = "ease-in" | "ease-out"; // + aliases
+let timingFunc: timingFunction;
+timingFunc = "ease-in";
+
+function total(arg1: 12 | 0 = 0): void {
+  console.log(arg1);
+}
+
+
+//never
+function error(message: string): never {
+  throw new Error(message)
+}
+
+function fail() {
+  return error('Something went wrong');
+}
+
+//null & undefined
+let numberAgain: number = null;
+// let numberNull: null = 13; Not working
+let u: undefined = ((): undefined =>  { return })();
+let uOrElse: undefined | number;
+
+//AS & Angle-bracket
+let variable: unknown = "This is a string";
+// let myString: string = variable; Error
+let myString2: string = (variable as string)
+let myString3: string = (<string>variable).length.toString()
