@@ -7,6 +7,7 @@ let thirdArray: (number | boolean)[] = [14, true, false]; // multiple options
 let tuple: [number, string, string] = [13, "doe", "john"]; // tuple
 let tupleExpert: [object, any, [string, boolean | number], { level: string }] =
   [{}, true, ["", 15], { level: "string" }]; // multiple assignations
+
 let object: {
   level?: number | string;
   name: string;
@@ -107,24 +108,81 @@ function total(arg1: 12 | 0 = 0): void {
   console.log(arg1);
 }
 
-
 //never
 function error(message: string): never {
-  throw new Error(message)
+  throw new Error(message);
 }
 
-function fail() {
-  return error('Something went wrong');
+function fail(): never {
+  return error("Something went wrong");
 }
 
 //null & undefined
 let numberAgain: number = null;
 // let numberNull: null = 13; Not working
-let u: undefined = ((): undefined =>  { return })();
-let uOrElse: undefined | number;
+let u: undefined = ((): undefined => {
+  return;
+})();
+let unOrElse: undefined | number;
 
 //AS & Angle-bracket
 let variable: unknown = "This is a string";
 // let myString: string = variable; Error
-let myString2: string = (variable as string)
-let myString3: string = (<string>variable).length.toString()
+let myString2: string = variable as string;
+let myString3: number = (<string>variable).length;
+
+let htmlInput: HTMLInputElement; //lot of html types
+
+class Mother {
+  private static something = "Special Thing";
+  constructor(
+    protected name: string,
+    public firstname: string,
+    readonly age: number,
+    private secret: string
+  ) {}
+  //typescript is so cool
+
+  static getSomething() {
+    return Mother.something;
+  }
+}
+// Mother.thing  doesn't work
+Mother.getSomething();
+
+//interfaces
+
+interface Human {
+  speak() : void; 
+}
+
+interface Male {
+  gender() : void;
+}
+
+class Guy implements Human, Male {
+  speak() {
+    console.log("Hello!")
+  }
+
+  gender() {
+    console.log("I'm a male")
+  }
+}
+
+// abstract Classes
+
+abstract class Person {
+  speak() {
+    console.log("Hello")
+  };
+}
+
+class Father extends Person {
+  speak() {
+    super.speak()
+    console.log("You")
+  }
+}
+let person = new Father()
+// person.speak()
