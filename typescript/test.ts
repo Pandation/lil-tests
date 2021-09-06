@@ -43,7 +43,7 @@ function returnVoid(): void {
 function returnNum(num: number = 15): void {
   console.log(num);
 }
-let funct: Function = returnVoid; //generic type
+let funct: Function = returnVoid; //generic Function type
 
 let age: (num: number) => void;
 age = returnNum; //specific function type
