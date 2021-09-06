@@ -153,36 +153,49 @@ Mother.getSomething();
 //interfaces
 
 interface Human {
-  speak() : void; 
+  speak(): void;
 }
 
 interface Male {
-  gender() : void;
+  gender(): void;
 }
 
 class Guy implements Human, Male {
   speak() {
-    console.log("Hello!")
+    console.log("Hello!");
   }
 
   gender() {
-    console.log("I'm a male")
+    console.log("I'm a male");
   }
 }
 
 // abstract Classes
 
 abstract class Person {
-  speak() {
-    console.log("Hello")
-  };
+  abstract speak(): void;
+
+  hello() {
+    console.log("Hello ");
+  }
 }
 
 class Father extends Person {
   speak() {
-    super.speak()
-    console.log("You")
+    super.hello();
+    console.log("You");
   }
 }
-let person = new Father()
+let person = new Father();
 // person.speak()
+
+
+//generics
+
+function genericType<T>(arg: T) : T {
+  console.log(arg);
+  return arg;
+}
+
+let output1 = genericType("Hello")
+let output2 = genericType<string>("Hello") //other way
